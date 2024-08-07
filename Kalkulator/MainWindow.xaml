@@ -36,16 +36,16 @@
             <Button x:Name="divide" Background="#FFB9C6CE" Margin="5" Grid.Column="3" Grid.Row="0" FontFamily="Arial" FontSize="40">\</Button>
             <Button x:Name="backspace" Background="#FFB9C6CE" Margin="5" Grid.Column="2" Grid.Row="0" FontFamily="Arial" FontSize="40">Del</Button>
             <Button x:Name="clear" Background="#FFB9C6CE" Margin="5" Grid.Column="1" Grid.Row="0" FontFamily="Arial" FontSize="40">C</Button>
-            <Button x:Name="zro" Background="AntiqueWhite" Margin="5" Grid.Column="1" Grid.Row="4" FontFamily="Arial" FontSize="40">0</Button>
-            <Button x:Name="one" Background="AntiqueWhite" Margin="5" Grid.Column="0" Grid.Row="3" FontFamily="Arial" FontSize="40">1</Button>
-            <Button x:Name="two" Background="AntiqueWhite" Margin="5" Grid.Column="1" Grid.Row="3" FontFamily="Arial" FontSize="40">2</Button>
-            <Button x:Name="three" Background="AntiqueWhite" Margin="5" Grid.Column="2" Grid.Row="3" FontFamily="Arial" FontSize="40">3</Button>
-            <Button x:Name="four" Background="AntiqueWhite" Margin="5" Grid.Column="0" Grid.Row="2" FontFamily="Arial" FontSize="40">4</Button>
-            <Button x:Name="five" Background="AntiqueWhite" Margin="5" Grid.Column="1" Grid.Row="2" FontFamily="Arial" FontSize="40">5</Button>
-            <Button x:Name="six" Background="AntiqueWhite" Margin="5" Grid.Column="2" Grid.Row="2" FontFamily="Arial" FontSize="40">6</Button>
-            <Button x:Name="seven" Background="AntiqueWhite" Margin="5" Grid.Column="0" Grid.Row="1" FontFamily="Arial" FontSize="40">7</Button>
-            <Button x:Name="eight" Background="AntiqueWhite" Margin="5" Grid.Column="1" Grid.Row="1" FontFamily="Arial" FontSize="40">8</Button>
-            <Button x:Name="nine" Background="AntiqueWhite" Margin="5" Grid.Column="2" Grid.Row="1" FontFamily="Arial" FontSize="40">9</Button>
+            <Button x:Name="zero" Click="Click" Background="AntiqueWhite" Margin="5" Grid.Column="1" Grid.Row="4" FontFamily="Arial" FontSize="40">0</Button>
+            <Button x:Name="one" Click="Click" Background="AntiqueWhite" Margin="5" Grid.Column="0" Grid.Row="3" FontFamily="Arial" FontSize="40">1</Button>
+            <Button x:Name="two" Click="Click" Background="AntiqueWhite" Margin="5" Grid.Column="1" Grid.Row="3" FontFamily="Arial" FontSize="40">2</Button>
+            <Button x:Name="three" Click="Click" Background="AntiqueWhite" Margin="5" Grid.Column="2" Grid.Row="3" FontFamily="Arial" FontSize="40">3</Button>
+            <Button x:Name="four" Click="Click" Background="AntiqueWhite" Margin="5" Grid.Column="0" Grid.Row="2" FontFamily="Arial" FontSize="40">4</Button>
+            <Button x:Name="five" Click="Click" Background="AntiqueWhite" Margin="5" Grid.Column="1" Grid.Row="2" FontFamily="Arial" FontSize="40">5</Button>
+            <Button x:Name="six" Click="Click" Background="AntiqueWhite" Margin="5" Grid.Column="2" Grid.Row="2" FontFamily="Arial" FontSize="40">6</Button>
+            <Button x:Name="seven" Click="Click" Background="AntiqueWhite" Margin="5" Grid.Column="0" Grid.Row="1" FontFamily="Arial" FontSize="40">7</Button>
+            <Button x:Name="eight" Click="Click" Background="AntiqueWhite" Margin="5" Grid.Column="1" Grid.Row="1" FontFamily="Arial" FontSize="40">8</Button>
+            <Button x:Name="nine" Click="Click" Background="AntiqueWhite" Margin="5" Grid.Column="2" Grid.Row="1" FontFamily="Arial" FontSize="40">9</Button>
         </Grid>
     </Grid>
 </Window>
