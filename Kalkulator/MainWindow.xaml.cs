@@ -103,6 +103,12 @@ namespace Kalkulator
                         wynik.Content = Calculator.Result;
                         break;
                     }
+                case "backspace":
+                    {
+                        Calculator.Backspace();
+                        wynik.Content = Calculator.Result;
+                        break;
+                    }
             }
         }
     }

@@ -31,14 +31,14 @@ namespace Kalkulator.Functions
             Result += singleSign;
 
             if (Result[0] == '0' && !dotHasBeenChoosen)
-                Result = Result.TrimStart('0');
+                Result = default(string);
         }
         public static void addDot()     //dodaje kropkę
         {
             if (!dotHasBeenChoosen)
             {
                 dotHasBeenChoosen = true;
-                if (Result==null)
+                if (Result==default)
                     variableReader('0');
                 variableReader('.');
             }
@@ -47,6 +47,17 @@ namespace Kalkulator.Functions
         {
             Result = default(string);
             dotHasBeenChoosen=false;
+        }
+        public static void Backspace()      //usuwa ostani znak
+        {
+            if(Result != default)  //sprawdzenie czy Result nie jest równe 0
+            {
+                if (Result[Result.Length - 1] == '.')   //sprawdzenie czy usuwanym znakiem nie jest kropka
+                    dotHasBeenChoosen = false;
+                Result = Result.Remove(Result.Length - 1);  //usunięcie ostatniego znaku
+                if (Result.Length == 0)     //jeżeli usunięty znak był pierwszym znakiem cyfry to przypisze domyślną wartość do Result
+                    Result = default(string);
+            }
         }
     }
 }
