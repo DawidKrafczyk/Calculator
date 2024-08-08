@@ -55,7 +55,7 @@ namespace Kalkulator.Functions
                 if (Result[Result.Length - 1] == '.')   //sprawdzenie czy usuwanym znakiem nie jest kropka
                     dotHasBeenChoosen = false;
                 Result = Result.Remove(Result.Length - 1);  //usunięcie ostatniego znaku
-                if (Result.Length == 0)     //jeżeli usunięty znak był pierwszym znakiem cyfry to przypisze domyślną wartość do Result
+                if (Result.Length == 0 || (Result.Length == 1 && Result[0] == '0'))     //jeżeli usunięty znak był pierwszym znakiem cyfry lub po usunięciu zostanie 0 jako pierwsze to przypisze domyślną wartość do Result
                     Result = default(string);
             }
         }
