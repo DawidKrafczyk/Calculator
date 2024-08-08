@@ -80,7 +80,7 @@ namespace Kalkulator.Functions
                     }
                     else if (!dotHasBeenChoosen)
                     {
-                        tmpVariableLong = int.Parse(Result);
+                        tmpVariableLong = long.Parse(Result);
                         Result = default;
                     }
                 switch (operation)      //wybór operacji
@@ -99,6 +99,69 @@ namespace Kalkulator.Functions
                         break;
                 }
             }
+        }
+        public static void ExecuteOperation()
+        {
+            if (dotHasBeenChoosen)
+            {
+                if (tmpVariableDouble != default)
+                {
+                    //sytuacja gdy pierwsza i druga zmienna jest double
+                    Result = (string)execute(tmpVariableDouble, Result);
+                }
+                else
+                {
+                    //sytuacja gdy mamy tylko druga zmienna typu double
+                    Result = (string)execute((double)tmpVariableLong, Result);
+                }
+            }
+            else
+            {
+                if(tmpVariableDouble != default)
+                {
+                    //sytuacja gdy pierwsza zmienna jest typu double
+                    Result = execute(tmpVariableDouble, double.Parse(Result));
+                }
+                else
+                {
+                    //sytuacja gdy obie zmienne sa typu long
+                    Result = execute(tmpVariableLong, long.Parse(Result));
+                }
+            }
+        }
+        private static dynamic execute(dynamic variable1, dynamic variable2)
+        {
+            dynamic tmpResult;
+            switch (choosenOperation)
+            {
+                case '+':
+                    {
+                        tmpResult = variable1 + variable2;
+                        break;
+                    }
+                case '-':
+                    {
+                        tmpResult = variable1 - variable2;
+                        break;
+                    }
+                case '*':
+                    {
+                        tmpResult = variable1 * variable2;
+                        break;
+                    }
+                case '/':
+                    {
+                        tmpResult = variable1 / variable2;
+                        break;
+                    }
+                default:
+                    {
+                        tmpResult = default;
+                        break;
+                    }
+            }
+            object tmpResultOBJ = tmpResult;
+            return tmpResultOBJ.ToString();
         }
     }
 }

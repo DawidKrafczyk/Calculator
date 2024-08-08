@@ -28,7 +28,7 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
             <Rectangle Fill="Azure" Grid.RowSpan="5" Grid.ColumnSpan="4"/>
-            <Button x:Name="equal" Background="LightSkyBlue" Margin="5" Grid.Column="3" Grid.Row="4" FontFamily="Arial" FontSize="40">=</Button>
+            <Button x:Name="equal" Click="Click" Background="LightSkyBlue" Margin="5" Grid.Column="3" Grid.Row="4" FontFamily="Arial" FontSize="40">=</Button>
             <Button x:Name="dot" Click="Click" Background="#FFB9C6CE" Margin="5" Grid.Column="2" Grid.Row="4" FontFamily="Arial" FontSize="40">,</Button>
             <Button x:Name="plus" Click="Click" Background="#FFB9C6CE" Margin="5" Grid.Column="3" Grid.Row="3" FontFamily="Arial" FontSize="40">+</Button>
             <Button x:Name="minus" Click="Click" Background="#FFB9C6CE" Margin="5" Grid.Column="3" Grid.Row="2" FontFamily="Arial" FontSize="40">-</Button>

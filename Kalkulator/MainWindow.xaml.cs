@@ -135,7 +135,7 @@ namespace Kalkulator
                     }
                 case "equal":
                     {
-                        //Calculator.ChooseOperation('=');
+                        Calculator.ExecuteOperation();
                         wynik.Content = Calculator.Result;
                         break;
                     }
