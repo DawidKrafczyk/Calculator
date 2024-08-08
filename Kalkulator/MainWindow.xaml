@@ -30,10 +30,10 @@
             <Rectangle Fill="Azure" Grid.RowSpan="5" Grid.ColumnSpan="4"/>
             <Button x:Name="equal" Background="LightSkyBlue" Margin="5" Grid.Column="3" Grid.Row="4" FontFamily="Arial" FontSize="40">=</Button>
             <Button x:Name="dot" Click="Click" Background="#FFB9C6CE" Margin="5" Grid.Column="2" Grid.Row="4" FontFamily="Arial" FontSize="40">,</Button>
-            <Button x:Name="plus" Background="#FFB9C6CE" Margin="5" Grid.Column="3" Grid.Row="3" FontFamily="Arial" FontSize="40">+</Button>
-            <Button x:Name="minus" Background="#FFB9C6CE" Margin="5" Grid.Column="3" Grid.Row="2" FontFamily="Arial" FontSize="40">-</Button>
-            <Button x:Name="multiply" Background="#FFB9C6CE" Margin="5" Grid.Column="3" Grid.Row="1" FontFamily="Arial" FontSize="40">X</Button>
-            <Button x:Name="divide" Background="#FFB9C6CE" Margin="5" Grid.Column="3" Grid.Row="0" FontFamily="Arial" FontSize="40">\</Button>
+            <Button x:Name="plus" Click="Click" Background="#FFB9C6CE" Margin="5" Grid.Column="3" Grid.Row="3" FontFamily="Arial" FontSize="40">+</Button>
+            <Button x:Name="minus" Click="Click" Background="#FFB9C6CE" Margin="5" Grid.Column="3" Grid.Row="2" FontFamily="Arial" FontSize="40">-</Button>
+            <Button x:Name="multiply" Click="Click" Background="#FFB9C6CE" Margin="5" Grid.Column="3" Grid.Row="1" FontFamily="Arial" FontSize="40">X</Button>
+            <Button x:Name="divide" Click="Click" Background="#FFB9C6CE" Margin="5" Grid.Column="3" Grid.Row="0" FontFamily="Arial" FontSize="40">\</Button>
             <Button x:Name="backspace" Click="Click" Background="#FFB9C6CE" Margin="5" Grid.Column="2" Grid.Row="0" FontFamily="Arial" FontSize="40">Del</Button>
             <Button x:Name="clear" Click="Click" Background="#FFB9C6CE" Margin="5" Grid.Column="1" Grid.Row="0" FontFamily="Arial" FontSize="40">C</Button>
             <Button x:Name="zero" Click="Click" Background="AntiqueWhite" Margin="5" Grid.Column="1" Grid.Row="4" FontFamily="Arial" FontSize="40">0</Button>

@@ -109,6 +109,36 @@ namespace Kalkulator
                         wynik.Content = Calculator.Result;
                         break;
                     }
+                case "plus":
+                    {
+                        Calculator.ChooseOperation('+');
+                        wynik.Content = Calculator.Result;
+                        break;
+                    }
+                case "minus":
+                    {
+                        Calculator.ChooseOperation('-');
+                        wynik.Content = Calculator.Result;
+                        break;
+                    }
+                case "multiply":
+                    {
+                        Calculator.ChooseOperation('*');
+                        wynik.Content = Calculator.Result;
+                        break;
+                    }
+                case "divide":
+                    {
+                        Calculator.ChooseOperation('/');
+                        wynik.Content = Calculator.Result;
+                        break;
+                    }
+                case "equal":
+                    {
+                        //Calculator.ChooseOperation('=');
+                        wynik.Content = Calculator.Result;
+                        break;
+                    }
             }
         }
     }

@@ -18,12 +18,18 @@ namespace Kalkulator.Functions
                 result = value;
             }
         }
-        public static bool dotHasBeenChoosen {  get; set; }     //przechowuje czy przecinek został wybrany
+        static long tmpVariableLong { get; set; }   //przechowuje pierwszą zmienną przed dokonaniem operacji
+        static double tmpVariableDouble { get; set; }   //przechowuje pierwszą zmienną przed dokonaniem operacji
+        static char choosenOperation {  get; set; }     //przechowuje wybraną operację
+        static bool dotHasBeenChoosen {  get; set; }     //przechowuje czy przecinek został wybrany
 
         static Calculator()     //przypisuje poczatkowe wartości po uruchomieniu programu
         {
             Result = default(string);
             dotHasBeenChoosen = false;
+            tmpVariableLong = default;
+            tmpVariableDouble = default;
+            choosenOperation = default;
         }
 
         static public void variableReader<T>(T singleSign)      //wpisuje pojedynczy znak do result
@@ -47,6 +53,9 @@ namespace Kalkulator.Functions
         {
             Result = default(string);
             dotHasBeenChoosen=false;
+            tmpVariableLong = default;
+            tmpVariableDouble = default;
+            choosenOperation = default;
         }
         public static void Backspace()      //usuwa ostani znak
         {
@@ -57,6 +66,38 @@ namespace Kalkulator.Functions
                 Result = Result.Remove(Result.Length - 1);  //usunięcie ostatniego znaku
                 if (Result.Length == 0 || (Result.Length == 1 && Result[0] == '0'))     //jeżeli usunięty znak był pierwszym znakiem cyfry lub po usunięciu zostanie 0 jako pierwsze to przypisze domyślną wartość do Result
                     Result = default(string);
+            }
+        }
+        public static void ChooseOperation(char operation)  //wybór operacji
+        {
+            if(Result != default)   //zabezpiecznie, aby była wybrana pierwsza zmienna
+            {
+                if (choosenOperation == default)   //zabezpieczenie podczas zmiany operacji (żeby nie była przypisywana zmienna drugi raz)
+                    if (dotHasBeenChoosen)
+                    {
+                        tmpVariableDouble = double.Parse(Result);
+                        Result = default;
+                    }
+                    else if (!dotHasBeenChoosen)
+                    {
+                        tmpVariableLong = int.Parse(Result);
+                        Result = default;
+                    }
+                switch (operation)      //wybór operacji
+                {
+                    case '+':
+                        choosenOperation = '+';
+                        break;
+                    case '-':
+                        choosenOperation = '-';
+                        break;
+                    case '*':
+                        choosenOperation = '*';
+                        break;
+                    case '/':
+                        choosenOperation = '/';
+                        break;
+                }
             }
         }
     }
