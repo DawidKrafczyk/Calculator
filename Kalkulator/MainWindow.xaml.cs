@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Kalkulator.Functions;
 
 namespace Kalkulator
 {
@@ -32,52 +33,74 @@ namespace Kalkulator
             {
                 case "zero":
                     {
-                        wynik.Content = "0";
+                        Calculator.variableReader(0);
+                        wynik.Content = Calculator.Result;
                         break;
                     }
                 case "one":
                     {
-                        wynik.Content = "1";
+                        Calculator.variableReader(1);
+                        wynik.Content = Calculator.Result;
                         break;
                     }
                 case "two":
                     {
-                        wynik.Content = "2";
+                        Calculator.variableReader(2);
+                        wynik.Content = Calculator.Result;
                         break;
                     }
                 case "three":
                     {
-                        wynik.Content = "3";
+                        Calculator.variableReader(3);
+                        wynik.Content = Calculator.Result;
                         break;
                     }
                 case "four":
                     {
-                        wynik.Content = "4";
+                        Calculator.variableReader(4);
+                        wynik.Content = Calculator.Result;
                         break;
                     }
                 case "five":
                     {
-                        wynik.Content = "5";
+                        Calculator.variableReader(5);
+                        wynik.Content = Calculator.Result;
                         break;
                     }
                 case "six":
                     {
-                        wynik.Content = "6";
+                        Calculator.variableReader(6);
+                        wynik.Content = Calculator.Result;
                         break;
                     }
                 case "seven":
                     {
-                        wynik.Content = "7";
+                        Calculator.variableReader(7);
+                        wynik.Content = Calculator.Result;
                         break;
                     }
                 case "eight":
                     {
-                        wynik.Content = "8";
+                        Calculator.variableReader(8);
+                        wynik.Content = Calculator.Result;
                         break;
                     }
                 case "nine":
                     {
-                        wynik.Content = "9";
+                        Calculator.variableReader(9);
+                        wynik.Content = Calculator.Result;
+                        break;
+                    }
+                case "dot":
+                    {
+                        Calculator.addDot();
+                        wynik.Content = Calculator.Result;
+                        break;
+                    }
+                case "clear":
+                    {
+                        Calculator.Clear();
+                        wynik.Content = Calculator.Result;
                         break;
                     }
             }
