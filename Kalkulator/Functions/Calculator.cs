@@ -1,5 +1,7 @@
 ﻿using System;
+using System.CodeDom;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
@@ -75,8 +77,9 @@ namespace Kalkulator.Functions
                 if (choosenOperation == default)   //zabezpieczenie podczas zmiany operacji (żeby nie była przypisywana zmienna drugi raz)
                     if (dotHasBeenChoosen)
                     {
-                        tmpVariableDouble = double.Parse(Result);
+                        tmpVariableDouble = convertToDouble(Result)/*double.Parse(Result, System.Globalization.CultureInfo.InvariantCulture)*/;
                         Result = default;
+                        dotHasBeenChoosen = default;
                     }
                     else if (!dotHasBeenChoosen)
                     {
@@ -107,12 +110,12 @@ namespace Kalkulator.Functions
                 if (tmpVariableDouble != default)
                 {
                     //sytuacja gdy pierwsza i druga zmienna jest double
-                    Result = (string)execute(tmpVariableDouble, Result);
+                    Result = (string)execute(tmpVariableDouble, convertToDouble(Result)/*double.Parse(Result, System.Globalization.CultureInfo.InvariantCulture)*/);
                 }
                 else
                 {
                     //sytuacja gdy mamy tylko druga zmienna typu double
-                    Result = (string)execute((double)tmpVariableLong, Result);
+                    Result = (string)execute((double)tmpVariableLong, convertToDouble(Result)/*double.Parse(Result, System.Globalization.CultureInfo.InvariantCulture)*/);
                 }
             }
             else
@@ -120,7 +123,7 @@ namespace Kalkulator.Functions
                 if(tmpVariableDouble != default)
                 {
                     //sytuacja gdy pierwsza zmienna jest typu double
-                    Result = execute(tmpVariableDouble, double.Parse(Result));
+                    Result = execute(tmpVariableDouble, convertToDouble(Result)/*double.Parse(Result, System.Globalization.CultureInfo.InvariantCulture)*/);
                 }
                 else
                 {
@@ -128,6 +131,10 @@ namespace Kalkulator.Functions
                     Result = execute(tmpVariableLong, long.Parse(Result));
                 }
             }
+            dotHasBeenChoosen = Result.Contains('.') || Result.Contains(',');
+            tmpVariableLong = default;
+            tmpVariableDouble = default;
+            choosenOperation = default;
         }
         private static dynamic execute(dynamic variable1, dynamic variable2)
         {
@@ -151,7 +158,7 @@ namespace Kalkulator.Functions
                     }
                 case '/':
                     {
-                        tmpResult = variable1 / variable2;
+                        tmpResult = variable1 / (double)variable2;
                         break;
                     }
                 default:
@@ -162,6 +169,42 @@ namespace Kalkulator.Functions
             }
             object tmpResultOBJ = tmpResult;
             return tmpResultOBJ.ToString();
+        }
+        public static double convertToDouble (string result)
+        {
+            /*
+             * metoda konwertująca string na double- Parsowanie nie zadziałało bo czasami nie wykrywało przecinka
+             */
+            string beforeDot, afterDot;
+            string[] commaIndex;
+            double tmpValueBeforeDot, tmpValueAfterDot;
+            if (result.Contains('.'))
+            {
+                commaIndex = result.Split('.');
+                beforeDot = commaIndex[0];
+                afterDot = commaIndex[1];
+            }
+            else if (result.Contains(","))
+            {
+                commaIndex = result.Split(',');
+                beforeDot = commaIndex[0];
+                afterDot = commaIndex[1];
+            }
+            else
+            {
+                return double.Parse(result);
+            }
+            tmpValueBeforeDot = char.GetNumericValue(beforeDot[0]);
+            tmpValueAfterDot = char.GetNumericValue(afterDot[0]) * 0.1;
+            for (int i = 1; i < beforeDot.Length; i++) 
+            { 
+                tmpValueBeforeDot = (tmpValueBeforeDot * 10) + char.GetNumericValue(beforeDot[i]);
+            }
+            for (int i = 1; i < afterDot.Length; i++)
+            {
+                tmpValueAfterDot = tmpValueAfterDot + (char.GetNumericValue(afterDot[i]) * Math.Pow(0.1, i+1));
+            }
+            return tmpValueBeforeDot + tmpValueAfterDot;
         }
     }
 }
