@@ -20,8 +20,8 @@ namespace Kalkulator.Functions
                 result = value;
             }
         }
-        static long tmpVariableLong { get; set; }   //przechowuje pierwszą zmienną przed dokonaniem operacji
-        static double tmpVariableDouble { get; set; }   //przechowuje pierwszą zmienną przed dokonaniem operacji
+        static long tmpVariableLong { get; set; }   //przechowuje pierwszą zmienną typu long przed dokonaniem operacji
+        static double tmpVariableDouble { get; set; }   //przechowuje pierwszą zmienną typu double przed dokonaniem operacji
         static char choosenOperation {  get; set; }     //przechowuje wybraną operację
         static bool dotHasBeenChoosen {  get; set; }     //przechowuje czy przecinek został wybrany
 
@@ -77,7 +77,7 @@ namespace Kalkulator.Functions
                 if (choosenOperation == default)   //zabezpieczenie podczas zmiany operacji (żeby nie była przypisywana zmienna drugi raz)
                     if (dotHasBeenChoosen)
                     {
-                        tmpVariableDouble = convertToDouble(Result)/*double.Parse(Result, System.Globalization.CultureInfo.InvariantCulture)*/;
+                        tmpVariableDouble = convertToDouble(Result);
                         Result = default;
                         dotHasBeenChoosen = default;
                     }
@@ -105,17 +105,20 @@ namespace Kalkulator.Functions
         }
         public static void ExecuteOperation()
         {
+            /*
+             * metoda wybieracjąca odpowiednie zmienne do wykonania działania
+             */
             if (dotHasBeenChoosen)
             {
                 if (tmpVariableDouble != default)
                 {
                     //sytuacja gdy pierwsza i druga zmienna jest double
-                    Result = (string)execute(tmpVariableDouble, convertToDouble(Result)/*double.Parse(Result, System.Globalization.CultureInfo.InvariantCulture)*/);
+                    Result = (string)execute(tmpVariableDouble, convertToDouble(Result));
                 }
                 else
                 {
                     //sytuacja gdy mamy tylko druga zmienna typu double
-                    Result = (string)execute((double)tmpVariableLong, convertToDouble(Result)/*double.Parse(Result, System.Globalization.CultureInfo.InvariantCulture)*/);
+                    Result = (string)execute((double)tmpVariableLong, convertToDouble(Result));
                 }
             }
             else
@@ -123,7 +126,7 @@ namespace Kalkulator.Functions
                 if(tmpVariableDouble != default)
                 {
                     //sytuacja gdy pierwsza zmienna jest typu double
-                    Result = execute(tmpVariableDouble, convertToDouble(Result)/*double.Parse(Result, System.Globalization.CultureInfo.InvariantCulture)*/);
+                    Result = execute(tmpVariableDouble, convertToDouble(Result));
                 }
                 else
                 {
@@ -138,6 +141,9 @@ namespace Kalkulator.Functions
         }
         private static dynamic execute(dynamic variable1, dynamic variable2)
         {
+            /*
+             * metoda wykonująca działąnie
+             */
             dynamic tmpResult;
             switch (choosenOperation)
             {
