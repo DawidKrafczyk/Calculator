@@ -11,7 +11,7 @@ namespace Kalkulator.Functions
 {
     static class Calculator
     {
-        static string result;           //przechowuje wynik wyświetlany na kalkulatorze
+        static string result;          //przechowuje wynik wyświetlany na kalkulatorze
         public static string Result 
         {
             get { return result; }
